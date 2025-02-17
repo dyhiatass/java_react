@@ -1,0 +1,9 @@
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/Application.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/BackendApplication.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/config/SecurityConfig.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/controllers/AuthController.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/controllers/UserController.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/models/User.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/repositories/UserRepository.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/security/JwtUtil.java
+/Users/tasseda/Desktop/backend-java/backend-java/src/main/java/com/example/backend/services/UserService.java
