@@ -54,3 +54,4 @@ public class AuthController {
         return "Utilisateur non trouvé"; // Erreur si l'utilisateur n'existe pas
     }
 }
+

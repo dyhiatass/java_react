@@ -3,6 +3,7 @@ package com.example.backend.models;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.time.LocalDate; // Pour gérer les dates
 
 @Getter
 @Setter
@@ -14,7 +15,7 @@ public class User {
 
     @Id
     private String id;
-
+    private LocalDate birthday;
     private String username;
     private String email;
     private String password;

@@ -4,7 +4,6 @@ import com.example.backend.models.User;
 import com.example.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -34,4 +33,14 @@ public class UserController {
     public void deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
     }
+    @GetMapping("/birthdate/{birthdate}")
+    public List<User> getUserByBirthdate(@PathVariable String birthdate) {
+        return userService.getUserByBirthdate(birthdate);
+    }
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable String id, @RequestBody User user) {
+        return userService.updateUser(id, user);
+    }
 }
+// userById et updateUser: put
+// getUserByBirthdate: get
