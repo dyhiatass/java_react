@@ -1,5 +1,16 @@
 ./
 ├── .DS_Store
+├── .idea/
+│   ├── .gitignore
+│   ├── compiler.xml
+│   ├── dataSources/
+│   ├── dataSources.local.xml
+│   ├── dataSources.xml
+│   ├── encodings.xml
+│   ├── jarRepositories.xml
+│   ├── misc.xml
+│   ├── vcs.xml
+│   └── workspace.xml
 ├── .mvn/
 │   └── wrapper/
 │       └── maven-wrapper.properties
@@ -7,11 +18,11 @@
 │   └── settings.json
 ├── HELP.md
 ├── LICENSE
-├── README.md
 ├── mvnw
 ├── mvnw.cmd
 ├── pom.xml
 ├── readm.md
+├── README.md
 ├── src/
 │   ├── main/
 │   │   ├── java/
@@ -20,22 +31,22 @@
 │   │   │           └── backend/
 │   │   │               ├── Application.java
 │   │   │               ├── BackendApplication.java
-│   │   │               ├── application.properties
 │   │   │               ├── config/
 │   │   │               │   ├── SecurityConfig.java
 │   │   │               │   ├── WebSocketConfig.java
 │   │   │               │   └── WebSocketEventListener.java
 │   │   │               ├── controllers/
 │   │   │               │   ├── AuthController.java
-│   │   │               │   ├── ChatController.java
-│   │   │               │   └── UserController.java
+│   │   │               │   ├── UserController.java
+│   │   │               │   └── WebSocketController.java
 │   │   │               ├── models/
 │   │   │               │   ├── ChatMessage.java
 │   │   │               │   └── User.java
 │   │   │               ├── repositories/
 │   │   │               │   └── UserRepository.java
 │   │   │               ├── security/
-│   │   │               │   └── JwtUtil.java
+│   │   │               │   ├── JwtUtil.java
+│   │   │               │   └── WebSocketSecurityInterceptor.java
 │   │   │               └── services/
 │   │   │                   ├── ChatService.java
 │   │   │                   └── UserService.java
@@ -48,15 +59,54 @@
 │                   └── backend/
 │                       └── BackendApplicationTests.java
 ├── target/
+│   ├── backend-0.0.1-SNAPSHOT.jar
+│   ├── backend-0.0.1-SNAPSHOT.jar.original
 │   ├── classes/
-│   │   └── application.properties
+│   │   ├── application.properties
+│   │   └── com/
+│   │       └── example/
+│   │           └── backend/
+│   │               ├── BackendApplication.class
+│   │               ├── config/
+│   │               │   ├── SecurityConfig.class
+│   │               │   ├── WebSocketConfig.class
+│   │               │   └── WebSocketEventListener.class
+│   │               ├── controllers/
+│   │               │   ├── AuthController.class
+│   │               │   ├── UserController.class
+│   │               │   └── WebSocketController.class
+│   │               ├── models/
+│   │               │   ├── ChatMessage.class
+│   │               │   └── User.class
+│   │               ├── repositories/
+│   │               │   └── UserRepository.class
+│   │               ├── security/
+│   │               │   ├── JwtUtil.class
+│   │               │   └── WebSocketSecurityInterceptor.class
+│   │               └── services/
+│   │                   ├── ChatService.class
+│   │                   └── UserService.class
 │   ├── generated-sources/
 │   │   └── annotations/
-│   └── maven-status/
-│       └── maven-compiler-plugin/
-│           └── compile/
-│               └── default-compile/
-│                   ├── createdFiles.lst
-│                   └── inputFiles.lst
+│   ├── maven-archiver/
+│   │   └── pom.properties
+│   ├── maven-status/
+│   │   └── maven-compiler-plugin/
+│   │       ├── compile/
+│   │       │   └── default-compile/
+│   │       │       ├── createdFiles.lst
+│   │       │       └── inputFiles.lst
+│   │       └── testCompile/
+│   │           └── default-testCompile/
+│   │               ├── createdFiles.lst
+│   │               └── inputFiles.lst
+│   ├── surefire-reports/
+│   │   ├── com.example.backend.BackendApplicationTests.txt
+│   │   └── TEST-com.example.backend.BackendApplicationTests.xml
+│   └── test-classes/
+│       └── com/
+│           └── example/
+│               └── backend/
+│                   └── BackendApplicationTests.class
 ├── tree.js
 └── tree.txt

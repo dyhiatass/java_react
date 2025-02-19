@@ -31,7 +31,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/users").permitAll()  // Permettre l'inscription
                 .requestMatchers("/auth/login").permitAll()  // Permettre le login
-                .requestMatchers("/ws-chat/**").authenticated() // Sécuriser WebSocket
+                .requestMatchers("/ws-chat/**").permitAll()
                 .requestMatchers("/users/**").authenticated()  // Protéger les autres routes
             )
             .httpBasic().disable();  // Désactiver l'authentification basique
