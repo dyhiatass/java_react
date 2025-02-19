@@ -14,6 +14,6 @@ public class ChatService {
     }
 
     public void sendChatMessage(ChatMessage message) {
-        messagingTemplate.convertAndSend("/topic/public", message);
+        messagingTemplate.convertAndSend("/topic/messages", message);
     }
 }
