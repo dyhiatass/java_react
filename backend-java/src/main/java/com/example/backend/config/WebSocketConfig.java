@@ -1,7 +1,5 @@
 package com.example.backend.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -12,20 +10,17 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketConfig.class);
-
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        logger.info("📡 WebSocket STOMP Endpoint enregistré sur /ws-chat");
-        registry.addEndpoint("/ws-chat").setAllowedOrigins("*"); // Suppression de SockJS
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        config.enableSimpleBroker("/topic", "/queue"); // ✅ Supporte messages publics & privés
+        config.setApplicationDestinationPrefixes("/app"); // ✅ Préfixe pour les requêtes STOMP
+        config.setUserDestinationPrefix("/user"); // ✅ Gestion des messages privés
     }
 
     @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        logger.info("📨 Configuration du message broker :");
-        logger.info("➡️ Destination préfixe pour les clients : /app");
-        logger.info("⬅️ Topics activés pour les abonnés : /topic");
-        registry.enableSimpleBroker("/topic"); // Broker pour envoyer des messages
-        registry.setApplicationDestinationPrefixes("/app"); // Préfixe des messages entrants
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws-chat") // ✅ Point d'accès WebSocket
+                .setAllowedOrigins("*") // ✅ Accepte toutes les origines
+                .withSockJS(); // ✅ Active SockJS pour compatibilité navigateurs
     }
 }

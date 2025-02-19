@@ -1,59 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
+
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.4.2</version>
-    <relativePath/> 
+    <relativePath/>
   </parent>
 
   <groupId>com.example</groupId>
   <artifactId>backend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>backend</name>
-  <description>Spring Boot Backend avec MongoDB</description>
+  <description>Spring Boot Backend avec MongoDB et WebSocket</description>
 
   <properties>
     <java.version>17</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
   <dependencies>
-    <!-- Spring Boot Core -->
+    <!-- ✅ Core Spring Boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
     </dependency>
 
-    <!-- Spring Boot Web (REST API) -->
+    <!-- ✅ Web pour REST API -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <!-- MongoDB -->
+    <!-- ✅ MongoDB -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
 
-    <!-- Spring Security (Authentification) -->
+    <!-- ✅ Sécurité Spring Boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
-    <!-- Spring Security Messaging (pour sécuriser WebSocket avec JWT) -->
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-messaging</artifactId>
-    </dependency>
-
-    <!-- JWT (Token-based Authentication) -->
+    <!-- ✅ JSON Web Token (JWT) -->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt-api</artifactId>
@@ -72,26 +68,41 @@
       <scope>runtime</scope>
     </dependency>
 
-    <!-- Spring Boot WebSocket (Inclut déjà les fonctionnalités de messagerie STOMP) -->
+    <!-- ✅ Socket.IO Server v4 (compatible avec Postman) -->
+    <dependency>
+      <groupId>io.socket</groupId>
+      <artifactId>socket.io-server</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+
+    <!-- ✅ WebSocket Spring Boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
     </dependency>
 
-    <!-- Lombok (facilite l'écriture de code, annotations @Getter, @Setter, etc.) -->
+
+    <!-- ✅ Lombok (facilite le développement) -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
     </dependency>
 
-    <!-- Validation (Spring Boot) -->
+    <!-- ✅ Validation des données -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
 
-    <!-- Spring Boot Test (pour les tests unitaires et d'intégration) -->
+    <!-- ✅ Jackson pour gérer les objets JSON -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.15.3</version>
+    </dependency>
+
+    <!-- ✅ Dépendances pour les tests -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -101,13 +112,40 @@
 
   <repositories>
     <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
+      <id>maven-central</id>
+      <url>https://repo1.maven.org/maven2/</url>
+    </repository>
+    <repository>
+      <id>maven-sonatype</id>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
     </repository>
   </repositories>
 
   <build>
     <plugins>
+      <!-- ✅ Encodage UTF-8 pour éviter les erreurs -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- ✅ Compiler avec Java 17 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- ✅ Plugin Spring Boot -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>

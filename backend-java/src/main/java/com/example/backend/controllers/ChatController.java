@@ -2,27 +2,38 @@ package com.example.backend.controllers;
 
 import com.example.backend.models.ChatMessage;
 import com.example.backend.services.ChatService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.stereotype.Controller;
 
-import java.util.List;
-
-@RestController
-@RequestMapping("/chat")
+@Controller
 public class ChatController {
 
-    @Autowired
-    private ChatService chatService;
+    private final ChatService chatService;
+    private final SimpMessagingTemplate messagingTemplate;
 
-    // Récupérer les messages envoyés par un utilisateur
-    @GetMapping("/messages/sent/{sender}")
-    public List<ChatMessage> getMessagesBySender(@PathVariable String sender) {
-        return chatService.getMessagesBySender(sender);
+    public ChatController(ChatService chatService, SimpMessagingTemplate messagingTemplate) {
+        this.chatService = chatService;
+        this.messagingTemplate = messagingTemplate;
     }
 
-    // Récupérer les messages reçus par un utilisateur
-    @GetMapping("/messages/received/{receiver}")
-    public List<ChatMessage> getMessagesByReceiver(@PathVariable String receiver) {
-        return chatService.getMessagesByReceiver(receiver);
+    @MessageMapping("/send")
+    @SendTo("/topic/messages") // ✅ Diffuse à tous les abonnés STOMP
+    public ChatMessage sendMessage(ChatMessage message) {
+        ChatMessage savedMessage = chatService.saveMessage(
+                message.getSender(),
+                message.getReceiver(),
+                message.getContent()
+        );
+
+        // ✅ Envoi du message privé au destinataire uniquement
+        messagingTemplate.convertAndSendToUser(
+                message.getReceiver(),
+                "/queue/messages",
+                savedMessage
+        );
+
+        return savedMessage;
     }
 }

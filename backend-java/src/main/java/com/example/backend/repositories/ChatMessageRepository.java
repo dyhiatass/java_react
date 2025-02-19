@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface ChatMessageRepository extends MongoRepository<ChatMessage, String> {
-    List<ChatMessage> findBySender(String sender); // Récupérer les messages envoyés par un utilisateur
-    List<ChatMessage> findByReceiver(String receiver); // Récupérer les messages reçus par un utilisateur
+    List<ChatMessage> findBySender(String sender);
+    List<ChatMessage> findByReceiver(String receiver);
+    List<ChatMessage> findBySenderAndReceiver(String sender, String receiver);
 }

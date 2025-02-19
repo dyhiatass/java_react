@@ -1,23 +1,19 @@
 package com.example.backend.models;
 
-import lombok.*;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Document(collection = "messages") // Collection MongoDB pour stocker les messages
+@Data
+@Document(collection = "messages")
 public class ChatMessage {
 
     @Id
     private String id;
-    private String sender;  // Email de l'expéditeur
-    private String receiver; // Email du destinataire (optionnel)
+    private String sender;
+    private String receiver;
     private String content;
-    private LocalDateTime timestamp; // Date et heure du message
+    private LocalDateTime timestamp;
 }

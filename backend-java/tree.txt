@@ -4,6 +4,7 @@
 │   ├── .gitignore
 │   ├── compiler.xml
 │   ├── dataSources/
+│   ├── dataSources.local.xml
 │   ├── dataSources.xml
 │   ├── encodings.xml
 │   ├── jarRepositories.xml
@@ -28,24 +29,26 @@
 │   │   │   └── com/
 │   │   │       └── example/
 │   │   │           └── backend/
+│   │   │               ├── application/
 │   │   │               ├── Application.java
 │   │   │               ├── BackendApplication.java
 │   │   │               ├── config/
 │   │   │               │   ├── SecurityConfig.java
-│   │   │               │   ├── WebSocketConfig.java
-│   │   │               │   └── WebSocketEventListener.java
+│   │   │               │   └── SocketIOConfig.java
 │   │   │               ├── controllers/
 │   │   │               │   ├── AuthController.java
+│   │   │               │   ├── ChatController.java
+│   │   │               │   ├── SocketIOController.java
 │   │   │               │   ├── UserController.java
-│   │   │               │   └── WebSocketController.java
+│   │   │               │   └── WebSocketConfig.java
 │   │   │               ├── models/
 │   │   │               │   ├── ChatMessage.java
 │   │   │               │   └── User.java
 │   │   │               ├── repositories/
+│   │   │               │   ├── ChatMessageRepository.java
 │   │   │               │   └── UserRepository.java
 │   │   │               ├── security/
-│   │   │               │   ├── JwtUtil.java
-│   │   │               │   └── WebSocketSecurityInterceptor.java
+│   │   │               │   └── JwtUtil.java
 │   │   │               └── services/
 │   │   │                   ├── ChatService.java
 │   │   │                   └── UserService.java
@@ -58,8 +61,6 @@
 │                   └── backend/
 │                       └── BackendApplicationTests.java
 ├── target/
-│   ├── backend-0.0.1-SNAPSHOT.jar
-│   ├── backend-0.0.1-SNAPSHOT.jar.original
 │   ├── classes/
 │   │   ├── application.properties
 │   │   └── com/
@@ -68,44 +69,29 @@
 │   │               ├── BackendApplication.class
 │   │               ├── config/
 │   │               │   ├── SecurityConfig.class
-│   │               │   ├── WebSocketConfig.class
-│   │               │   └── WebSocketEventListener.class
+│   │               │   └── SocketIOConfig.class
 │   │               ├── controllers/
 │   │               │   ├── AuthController.class
-│   │               │   ├── UserController.class
-│   │               │   └── WebSocketController.class
+│   │               │   ├── SocketIOController.class
+│   │               │   └── UserController.class
 │   │               ├── models/
 │   │               │   ├── ChatMessage.class
 │   │               │   └── User.class
 │   │               ├── repositories/
+│   │               │   ├── ChatMessageRepository.class
 │   │               │   └── UserRepository.class
 │   │               ├── security/
-│   │               │   ├── JwtUtil.class
-│   │               │   └── WebSocketSecurityInterceptor.class
+│   │               │   └── JwtUtil.class
 │   │               └── services/
 │   │                   ├── ChatService.class
 │   │                   └── UserService.class
 │   ├── generated-sources/
 │   │   └── annotations/
-│   ├── maven-archiver/
-│   │   └── pom.properties
-│   ├── maven-status/
-│   │   └── maven-compiler-plugin/
-│   │       ├── compile/
-│   │       │   └── default-compile/
-│   │       │       ├── createdFiles.lst
-│   │       │       └── inputFiles.lst
-│   │       └── testCompile/
-│   │           └── default-testCompile/
-│   │               ├── createdFiles.lst
-│   │               └── inputFiles.lst
-│   ├── surefire-reports/
-│   │   ├── com.example.backend.BackendApplicationTests.txt
-│   │   └── TEST-com.example.backend.BackendApplicationTests.xml
-│   └── test-classes/
-│       └── com/
-│           └── example/
-│               └── backend/
-│                   └── BackendApplicationTests.class
+│   └── maven-status/
+│       └── maven-compiler-plugin/
+│           └── compile/
+│               └── default-compile/
+│                   ├── createdFiles.lst
+│                   └── inputFiles.lst
 ├── tree.js
 └── tree.txt
